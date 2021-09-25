@@ -4,8 +4,9 @@ let score:any=0;
 //map
 // export const map:any=[]
 export function initMap(map:any){
-    console.log("测试",score)
+    
 try{
+    console.log("测试",score)
     sessionStorage.setItem("score",score);
 }catch(e){
     console.log(e,"error")
@@ -72,4 +73,12 @@ export function elimianateline(map:any){
              })
          }
 
+}
+export function isComplete(map:any){
+    for (let i = 0; i < map[0].length; i++) {
+        if(map[0][i]==-1){
+            return false
+        }  
+    }
+    return true
 }

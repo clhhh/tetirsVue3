@@ -1,6 +1,9 @@
 <template>
 <div >
-
+clh的小方块
+<div>
+分数{{score}}
+</div>
 <div class="border">
     <div class="row" v-for="row in gameRow" :key="row">
 
@@ -10,16 +13,22 @@
 
     </div>
 </div>
+<div class="foot"></div>
 </div>
 </template>
 <script setup lang="ts">
 import Box from "./Box.vue";
 import {gameCol,gameRow} from "../game";
-import {startGame}from "../game"
-import {reactive} from "vue"
+import {initGame}from "../game"
+import {reactive, ref} from "vue"
 const map=reactive([])
 
-startGame(map)
+    let score=ref(sessionStorage.getItem("score"))
+    setInterval(function(){score.value=sessionStorage.getItem("score")},500)
+   
+
+
+initGame(map)
 </script>
 <style>
     .row{
@@ -32,5 +41,10 @@ startGame(map)
         /* height: 255px; */
         background: rgb(166, 188, 247);
         }
+    .foot{
+        width: 255px;
+        height: 3px;
+        background:rgb(166, 188, 247); ;
+    }
 </style>
 
